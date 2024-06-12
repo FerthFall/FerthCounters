@@ -1,4 +1,4 @@
-package com.example.ferthcounters;
+package com.FerthTech.ferthcounters;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.ferthcounters", appContext.getPackageName());
+        assertEquals("com.FerthTech.ferthcounters", appContext.getPackageName());
     }
 }

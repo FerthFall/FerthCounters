@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.ferthcounters"
+    namespace = "com.FerthTech.ferthcounters"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.ferthcounters"
+        applicationId = "com.FerthTech.ferthcounters"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

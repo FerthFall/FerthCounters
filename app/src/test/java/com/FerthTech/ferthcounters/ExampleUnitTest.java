@@ -1,4 +1,4 @@
-package com.example.ferthcounters;
+package com.FerthTech.ferthcounters;
 
 import org.junit.Test;
 

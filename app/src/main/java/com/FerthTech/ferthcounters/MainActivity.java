@@ -1,4 +1,4 @@
-package com.example.ferthcounters;
+package com.FerthTech.ferthcounters;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
