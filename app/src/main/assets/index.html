@@ -7,30 +7,32 @@
             color:white;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         .CommanderDamageHeader, .ManaFooter {
             display: flex;
             flex-direction: row;
             flex-wrap:nowrap;
             justify-content: center;
             align-items:center;
-        }
-
-        .CommanderDamageHeader {
             width:100%;
-            height:20%;
-            border-bottom:1px solid white;
+            height:30%;
+            position:relative;
         }
 
         .LifeMainBody {
             width:100%;
-            height:50%;
+            height:40%;
         }
 
         .ManaFooter {
-            width:100%;
-            height:30%;
             border-top:1px solid white;
-            position:relative;
+        }
+
+        .CommanderDamageHeader {
+            border-bottom:1px solid white;
         }
 
         .ManaCell {
@@ -127,6 +129,72 @@
             background-size:contain;
         }
 
+        #slider1::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("IconOne.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        #slider2::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("IconTwo.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        #slider3::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("IconThree.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        #slider4::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("IconFour.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        #slider5::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("IconFive.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        #slider6::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("IconSix.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
         input[type=range]:focus {
             outline: none;
         }
@@ -147,6 +215,83 @@
             height: 20px;
             top: -25px;
             right: 0;
+        }
+
+        #btnCounterReset {
+            position: absolute;
+            height: 20px;
+            bottom: -25px;
+            right: 0;
+        }
+
+        .float-left {
+            float:left;
+        }
+
+        .float-clear {
+            clear:both;
+        }
+
+        .healthCenter {
+            border-left: 1px solid white;
+            border-right: 1px solid white;
+            height:100%;
+            width:50%;
+            height:100%;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .healthSides {
+            height:100%;
+            width:25%;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .healthIcons {
+            font-weight: bolder;
+            font-size: 100px;
+        }
+
+        input[type='button'] {
+            border-radius: 25px;
+            border: 1px solid white;
+            background-color:black;
+            color:white;
+            font-size:11px;
+            width:93px;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            z-index: 100;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(000, 000, 000, 0.2);
+            margin: -10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-center {
+            background-color:black;
+            border: 1px solid white;
+            border-radius: 2px;
+            padding: 15px;
+        }
+
+        .modal-hide {
+            display:none;
         }
 
     </style>
@@ -178,14 +323,122 @@
             document.getElementById("colourlessSlider").value = 0;
             document.getElementById("colourlessSlider").oninput();
         }
+
+        function IncrementHealth(amount){
+            let healthTotal = document.getElementById("healthTotal");
+            let currentHealth = parseInt(healthTotal.innerHTML);
+            healthTotal.innerHTML = currentHealth + amount;
+        }
+
+        function ResetCounters(){
+            document.getElementById("slider1").value = 0;
+            document.getElementById("slider1").oninput();
+
+            document.getElementById("slider2").value = 0;
+            document.getElementById("slider2").oninput();
+
+            document.getElementById("slider3").value = 0;
+            document.getElementById("slider3").oninput();
+
+            document.getElementById("slider4").value = 0;
+            document.getElementById("slider4").oninput();
+
+            document.getElementById("slider5").value = 0;
+            document.getElementById("slider5").oninput();
+
+            document.getElementById("slider6").value = 0;
+            document.getElementById("slider6").oninput();
+        }
+
+        function SetLife() {
+            document.getElementById("healthTotal").innerHTML = document.getElementById("inputLife").value;
+            CloseLifeModal();
+        }
+
+        function OpenLifeModal() {
+            document.getElementById("modalBackdrop").className = "modal-backdrop";
+        }
+
+        function CloseLifeModal() {
+            document.getElementById("modalBackdrop").className = "modal-hide";
+        }
     </script>
 </head>
 <body>
+<div id="modalBackdrop" class="modal-hide">
+    <div class="modal-center">
+        <div>
+            Enter Life Total:
+            <input type="number" id="inputLife" />
+        </div>
+        <div style="text-align:right">
+            <input type="button" value="Confirm" onclick="SetLife()" />
+            <input type="button" value="Close" onclick="CloseLifeModal()" />
+        </div>
+    </div>
+</div>
 <div class="CommanderDamageHeader">
-
+    <input id="btnCounterReset" value="Reset Counters" type="button" onclick="ResetCounters()" >
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="slider1" id="float1">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="slider1" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('float1', this)" />
+        </div>
+    </div>
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="slider2" id="float2">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="slider2" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('float2', this)" />
+        </div>
+    </div>
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="slider3" id="float3">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="slider3" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('float3', this)" />
+        </div>
+    </div>
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="slider4" id="float4">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="slider4" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('float4', this)" />
+        </div>
+    </div>
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="slider5" id="float5">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="slider5" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('float5', this)" />
+        </div>
+    </div>
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="slider6" id="float6">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="slider6" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('float6', this)" />
+        </div>
+    </div>
 </div>
 <div class="LifeMainBody">
-
+    <div class="float-left healthSides" onclick="IncrementHealth(-1)">
+        <span class="healthIcons">-</span>
+    </div>
+    <div class="float-left healthCenter">
+        <span class="healthIcons" id="healthTotal" onclick="OpenLifeModal()">40</span>
+    </div>
+    <div class="float-left healthSides" onclick="IncrementHealth(1)">
+        <span class="healthIcons">+</span>
+    </div>
+    <div class="float-clear"></div>
 </div>
 <div class="ManaFooter">
     <input id="btnManaReset" value="Reset Mana" type="button" onclick="ResetFloatingMana()" >
