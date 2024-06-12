@@ -1,0 +1,242 @@
+<html>
+<head>
+    <title>Ferth's MTG Counters</title>
+    <style>
+        html, body {
+            background:black;
+            color:white;
+        }
+
+        .CommanderDamageHeader, .ManaFooter {
+            display: flex;
+            flex-direction: row;
+            flex-wrap:nowrap;
+            justify-content: center;
+            align-items:center;
+        }
+
+        .CommanderDamageHeader {
+            width:100%;
+            height:20%;
+            border-bottom:1px solid white;
+        }
+
+        .LifeMainBody {
+            width:100%;
+            height:50%;
+        }
+
+        .ManaFooter {
+            width:100%;
+            height:30%;
+            border-top:1px solid white;
+            position:relative;
+        }
+
+        .ManaCell {
+            width:15%;
+            border:1px solid white;
+            text-align:center;
+            height:100%;
+        }
+
+        .ManaCell img {
+            width:100%;
+        }
+
+        input[type=range]{
+            -webkit-appearance: none;
+            -webkit-transform:rotate(90deg);
+            position:absolute;
+            top: 74px;
+            left: -75px;
+            width: 205px;
+            direction: rtl
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 100%;
+            background: black;
+            border: none;
+        }
+
+        #whiteSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("WhiteIcon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        #blueSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("BlueIcon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        #greenSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("GreenIcon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        #blackSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("BlackIcon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        #redSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("RedIcon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        #colourlessSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 55px;
+            width: 55px;
+            background: url("ColourLessIcon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        .sliderHeader {
+            width:100%;
+            height:30px;
+        }
+
+        .sliderContainer {
+            width:100%;
+            height: calc(100% - 30px);
+            position:relative;
+        }
+
+        #btnManaReset {
+            position: absolute;
+            height: 20px;
+            top: -25px;
+            right: 0;
+        }
+
+    </style>
+    <script>
+        function UpdateSliderValues(elemID, slider) {
+            let lbl = document.getElementById(elemID).innerHTML = slider.value;
+        }
+
+        function IncrementSliderValues(elemID, slider) {
+            let lbl = document.getElementById(elemID).innerHTML = slider.value + 1;
+        }
+
+        function ResetFloatingMana(){
+            document.getElementById("whiteSlider").value = 0;
+            document.getElementById("whiteSlider").oninput();
+
+            document.getElementById("blueSlider").value = 0;
+            document.getElementById("blueSlider").oninput();
+
+            document.getElementById("blackSlider").value = 0;
+            document.getElementById("blackSlider").oninput();
+
+            document.getElementById("redSlider").value = 0;
+            document.getElementById("redSlider").oninput();
+
+            document.getElementById("greenSlider").value = 0;
+            document.getElementById("greenSlider").oninput();
+
+            document.getElementById("colourlessSlider").value = 0;
+            document.getElementById("colourlessSlider").oninput();
+        }
+    </script>
+</head>
+<body>
+<div class="CommanderDamageHeader">
+
+</div>
+<div class="LifeMainBody">
+
+</div>
+<div class="ManaFooter">
+    <input id="btnManaReset" value="Reset Mana" type="button" onclick="ResetFloatingMana()" >
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="whiteSlider" id="floatWhite">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="whiteSlider" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('floatWhite', this)" />
+        </div>
+    </div>
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="blueSlider" id="floatBlue">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="blueSlider" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('floatBlue', this)" />
+        </div>
+    </div>
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="blackSlider" id="floatBlack">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="blackSlider" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('floatBlack', this)" />
+        </div>
+    </div>
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="redSlider" id="floatRed">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="redSlider" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('floatRed', this)" />
+        </div>
+    </div>
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="greenSlider" id="floatGreen">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="greenSlider" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('floatGreen', this)" />
+        </div>
+    </div>
+    <div class="ManaCell">
+        <div class="sliderHeader">
+            <label for="colourlessSlider" id="floatColourless">0</label>
+        </div>
+        <div class="sliderContainer">
+            <input id="colourlessSlider" type="range" min="0" max="20" step="1" value="0" oninput="UpdateSliderValues('floatColourless', this)" />
+        </div>
+    </div>
+</div>
+</body>
+</html>
