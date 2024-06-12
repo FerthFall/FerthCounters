@@ -1,0 +1,1 @@
+Ferth's Counters does not access / store / share any device data
